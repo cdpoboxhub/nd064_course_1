@@ -19,7 +19,6 @@ def get_post(post_id):
                         (post_id,)).fetchone()
     title = connection.execute('SELECT title FROM posts WHERE id = ?', (post_id,)).fetchone()[0]
 
-    print(title)
     ## log lilne
     app.logger.info('Article ' + title + ' fetched successfull')
 

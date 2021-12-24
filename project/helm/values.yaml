@@ -1,0 +1,102 @@
+namespace:
+  name: sandbox
+ 
+service:
+  port: 4111
+  targetPort: 3111
+  protocol: TCP
+  type: ClusterIP
+
+image:
+  repository: cdpoboxhub/techtrends 
+  tag: latest
+  pullPolicy: IfNotPresent
+
+replicaCount: 1
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 64Mi
+  limits:
+    cpu: 128Mi
+    memory: 500m
+
+configmap:
+  data: "version: latest"
+
+#----------------------------------------------------------------------------------------------------------------------
+# OPTIONAL VALUES
+# These values have defaults, but may be overridden by the operator
+#----------------------------------------------------------------------------------------------------------------------
+
+# containerCommand is a list of strings that indicate a custom command to run for the container in place of the default
+# configured on the image. Omit to run the default command configured on the image.
+#
+# Example (run echo "Hello World"):
+#
+# containerCommand:
+#   - "echo"
+#   - "Hello World"
+containerCommand: null
+
+# containerPorts is a map that specifies the ports to open on the container. This is a nested map: the first map lists
+# the named ports, while the second layer lists the port spec. The named references can be used to refer to the specific
+# port of the container in other resources, like Service.
+# The expected keys of the port spec are:
+#   - port     (int)    (required) : The port in the container that should be exposed.
+#   - protocol (string) (required) : The network protocol (e.g TCP or UDP) that is exposed.
+#   - disabled (bool)              : Whether or not this port is disabled. This defaults to false if unset. Provided as a
+#                                    convenience to override the default ports on the commandline. For example, to
+#                                    disable the default port, you can pass `--set containerPorts.http.disabled=true`.
+#
+# The default config exposes TCP port 80 and binds the name `http` to it.
+containerPorts:
+  http:
+    port: 3111
+    protocol: TCP
+
+# livenessProbe is a map that specifies the liveness probe of the main application container. Liveness probes indicate
+# when a container has reached a fatal state where it needs to be restarted to recover. When the liveness probe fails,
+# the container is automatically recreated. You can read more about container liveness probes in the official docs:
+# https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/
+# NOTE: This variable is injected directly into the container spec.
+#
+# The following example specifies an http GET based liveness probe, that will base the probe on a http GET request to
+# the port bound to name `http` (see description on `containerPorts`) on the path `/`.
+#
+# EXAMPLE:
+#
+# livenessProbe:
+#   httpGet:
+#     path: /
+#     port: http
+#livenessProbe: {}
+ livenessProbe:
+   httpGet:
+     path: /healthz
+     port: http
+
+# readinessProbe is a map that specifies the readiness probe of the main application container. Readiness probes
+# indicate when a container is unable to serve traffic. When the readiness probe fails, the container is cycled out of
+# the list of available containers to the `Service`. You can read more about readiness probes in the official docs:
+# https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/
+# NOTE: This variable is injected directly into the container spec.
+#
+# The following example specifies an http GET based readiness probe, that will base the probe on a http GET request to
+# the port bound to name `http` (see description on `containerPorts`) on the path `/`.
+#
+# EXAMPLE:
+#
+# readinessProbe:
+#   httpGet:
+#     path: /
+#     port: http
+# #readinessProbe: {}
+ readinessProbe:
+   httpGet:
+     path: /healthz
+     port: http
+
+
+

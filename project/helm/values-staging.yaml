@@ -1,0 +1,21 @@
+namespace:
+  name: staging 
+ 
+service:
+  port: 5111
+  type: ClusterIP
+
+image:
+  repository: cdpoboxhub/techtrends 
+  tag: latest
+  pullPolicy: IfNotPresent
+
+replicaCount: 3
+
+resources:
+  requests:
+    cpu: 90m
+    memory: 300Mi
+
+configmap:
+  data: "version: latest"

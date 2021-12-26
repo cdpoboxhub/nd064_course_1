@@ -2,7 +2,8 @@
 
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-default_box = "generic/opensuse15"
+default_box = "opensuse/Leap-15.2.x86_64"
+# # default_box = "generic/opensuse15"
 ## From techtrends vagrant file that had suse image changed. This worked at some point opensuse/Leap-15.2.x86_64 
 ##  # set the image for the vagrant box
 ##  config.vm.box = "opensuse/Leap-15.2.x86_64"

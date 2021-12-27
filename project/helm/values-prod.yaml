@@ -1,12 +1,12 @@
 namespace:
-  name: prod 
- 
+  name: prod
+  
 service:
   port: 7111
   type: ClusterIP
 
 image:
-  repository: cdpoboxhub/techtrends 
+  repository: cdpoboxhub/techtrends
   tag: latest
   pullPolicy: IfNotPresent
 
@@ -19,6 +19,6 @@ resources:
   limits:
     cpu: 256m
     memory: 500Mi
-    
+
 ## configmap:
 ##  data: "version: latest"

@@ -20,5 +20,5 @@ resources:
     cpu: 256m
     memory: 500Mi
     
-configmap:
-  data: "version: latest"
+## configmap:
+##  data: "version: latest"

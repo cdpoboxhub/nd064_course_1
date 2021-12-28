@@ -8,8 +8,8 @@ service:
   type: ClusterIP
 
 image:
-  repository: cdpoboxhub/techtrends 
-  tag: latest
+  repository: cdjdrawer/techtrends 
+  tag: HEAD
   pullPolicy: IfNotPresent
 
 replicaCount: 1

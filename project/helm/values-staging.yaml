@@ -6,8 +6,8 @@ service:
   type: ClusterIP
 
 image:
-  repository: cdpoboxhub/techtrends 
-  tag: latest
+  repository: cdjdrawer/techtrends 
+  tag: MAIN
   pullPolicy: IfNotPresent
 
 replicaCount: 3

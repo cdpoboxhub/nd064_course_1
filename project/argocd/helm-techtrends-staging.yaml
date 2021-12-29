@@ -1,23 +1,25 @@
-FFapiVersion: argoproj.io/v1alpha1DEL
-kind: Application
-metadata:
-  name: argocd-techtrends-staging
-  namespace: argocd
-spec:
-  destination:
-    namespace: default
-    server: https://kubernetes.default.svc
-  project: default
-  source:
-    helm:
-      valueFiles:
-      - helm-techtrends-staging.yaml
 
-    repoURL: https://github.com/cdpoboxhub/nd064_course_1.git
-    path: project/argocd
+# apiVersion: argoproj.io/v1alpha1DEL
+# kind: Application
+# metadata:
+#   name: argocd-techtrends-staging
+#   namespace: argocd
+# spec:
+#   destination:
+#     namespace: default
+#     server: https://kubernetes.default.svc
+#   project: default
+#   source:
+#     helm:
+#       valueFiles:
+#       - helm-techtrends-staging.yaml
+
+#     repoURL: https://github.com/cdpoboxhub/nd064_course_1.git
+#     path: project/argocd
     
 
-    targetRevision: HEAD
+#     targetRevision: HEAD
+
 
 #    syncPolicy:
 #      syncOptions:

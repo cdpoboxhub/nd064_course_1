@@ -9,8 +9,7 @@ service:
 
 image:
   repository: cdjdrawer/techtrends 
-  tag: HEAD
-
+  tag: latest
   pullPolicy: IfNotPresent
 
 replicaCount: 1
@@ -22,6 +21,8 @@ resources:
   limits:
     cpu: 128Mi
     memory: 500m
+
+containerPort: 3111
 
 configmap:
   data: "version: latest"
@@ -39,7 +40,7 @@ configmap:
 # containerCommand:
 #   - "echo"
 #   - "Hello World"
-containerCommand: null
+# #containerCommand: null
 
 # containerPorts is a map that specifies the ports to open on the container. This is a nested map: the first map lists
 # the named ports, while the second layer lists the port spec. The named references can be used to refer to the specific

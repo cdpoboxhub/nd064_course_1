@@ -14,5 +14,5 @@ spec:
       - values-prod.yaml
     path: project/helm
     repoURL: https://github.com/cdpoboxhub/nd064_course_1.git
-    targetRevision: MAIN
+    targetRevision: HEAD
 

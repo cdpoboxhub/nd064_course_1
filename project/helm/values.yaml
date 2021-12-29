@@ -9,8 +9,7 @@ service:
 
 image:
   repository: cdjdrawer/techtrends 
-  tag: HEAD
-
+  tag: latest
   pullPolicy: IfNotPresent
 
 replicaCount: 1

@@ -1,6 +1,6 @@
 namespace:
   name: sandbox
- 
+
 service:
   port: 4111
   targetPort: 3111
@@ -10,6 +10,7 @@ service:
 image:
   repository: cdjdrawer/techtrends 
   tag: HEAD
+
   pullPolicy: IfNotPresent
 
 replicaCount: 1
@@ -75,7 +76,7 @@ containerPorts:
  livenessProbe:
    httpGet:
      path: /healthz
-     port: http
+     port: 3111
 
 # readinessProbe is a map that specifies the readiness probe of the main application container. Readiness probes
 # indicate when a container is unable to serve traffic. When the readiness probe fails, the container is cycled out of
@@ -96,7 +97,7 @@ containerPorts:
  readinessProbe:
    httpGet:
      path: /healthz
-     port: http
+     port: 3111
 
 
 

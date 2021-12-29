@@ -16,6 +16,7 @@ spec:
     repoURL: https://github.com/cdpoboxhub/nd064_course_1.git
     path: project/argocd
     
+
     targetRevision: HEAD
 
 #    syncPolicy:

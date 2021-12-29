@@ -6,9 +6,7 @@ metadata:
   name: argocd-techtrends-staging
   namespace: argocd
 spec:
-  destination:
-    namespace: default
-    server: https://kubernetes.default.svc
+
   project: default
   source:
     helm:
@@ -17,6 +15,9 @@ spec:
     repoURL: https://github.com/cdpoboxhub/nd064_course_1.git
     path: project/argocd
     targetRevision: HEAD
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
 
 
 #    syncPolicy:
